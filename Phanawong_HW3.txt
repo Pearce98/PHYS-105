@@ -1,0 +1,55 @@
+//phanawong_hw3.c
+//Pearce Phanawong 2 April 2018
+//Bounce a photon off a mirror using philsplot
+//Show particle moving with time
+
+#include <stdio.h>
+#include "philsplot.h"
+#include <math.h>
+
+int main()
+{
+	double x1=-10.,x2=+10.,y1=-7.,y2=+7.;
+		//limits of the plot
+	open_plot("1000x700");
+		//opens the plot
+	setlim_plot(x1,x2,y1,y2);
+		//sets the limits of the plot
+	double m1=-10.,n1=-7,m2=+10.;
+		//mirror length
+	locate_plot(m1,n1);
+		//starts mirror spot
+	int mcolor=1, mstyle=1, mweight=6;
+		//color, style, and weight of mirror
+	drawto_plot(m2,n1,mcolor,mstyle,mweight);
+		//draws the mirror
+	double expand=2.0;
+		//the size of the dot
+	int pcolor=2,pvertex=10,pStyle=1,pMem=1;
+		//the color, sides, style, and memory of dot
+	double x=-9, y=+6, x3=0, y3=0;
+	while(x<x3)
+	{
+		putpoint_plot(x,y,pvertex,pStyle,pcolor,expand,pMem);
+		flush_plot();
+		delay_plot(50);
+		delpoint_plot();
+		x=x+0.3;
+		y=y-0.5;
+		delpoint_plot();
+	}
+	double x4=0, y4=-6.5;
+	while(x4<x2)
+	{
+		putpoint_plot(x4,y4,pvertex,pStyle,pcolor,expand,pMem);
+		flush_plot();
+		delay_plot(50);
+		delpoint_plot();
+		x4=x4+0.3;
+		y4=y4+0.5;
+	}
+	printf("Press Enter");
+	getchar();
+	close_plot();
+		//last 3 lines close the plot after pressing enter
+}

@@ -1,0 +1,46 @@
+//Pearce Phanawong
+//Final Project
+//19 April 2018
+//Monte Carlo Program to estimate the value of pi
+
+//This program uses a random number generator to estimate the value of pi.
+//It randomly generates a number between 0 and some max number.
+//It then divides the generated number by the max number to give a value between 0 and 1.
+//This will be done twice per loop, one for the x and one for the y value.
+//The numbers will be plotted into the first quadrant of a coordinate plane.
+//If the value of the points is less than a distance of 1 from the origin, it will add 1 to c.
+//The value of pi can be found as a ratio between the number of points inside the circle to 
+//the number of points outside the circle times 4. 
+//The user will be asked for the number of points used to estimate the value of pi,
+//then it will plot all the points and find the ratio, and return the estimated value of pi.
+//The larger number of points used, the more accurate the value of pi will be.
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main()
+{
+	int n=0,c=0,i;
+		//n is the number of points, i will be used in for loop
+		//c is to determine which points are in the circle or not
+	double x,y,a,pi;
+		//x and y are positive axis
+		//a is the equation for x and y
+		//pi is the estimate of pi
+	printf("Enter the number of points to estimate pi:");
+	scanf("%d",&n);
+		//ask for number of points to use to estimate
+	for(i=0;i<n;i++) 
+	{
+		x=(double)rand()/RAND_MAX;
+		y=(double)rand()/RAND_MAX;
+			//equations to generate random points
+		a=sqrt(pow(x,2)+pow(y,2));
+		if(a<=1) c++;
+			//determines if points are inside or outside circle
+	}
+	pi=(double)c/n*4;
+		//estimate is in one quadrant so need to divide by 4
+	printf("The estimate of pi is %g\n",pi);
+}

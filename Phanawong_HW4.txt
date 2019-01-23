@@ -1,0 +1,48 @@
+//Pearce Phanawong
+//Homework 4
+//3 April 2018
+#include <stdio.h>
+#include <math.h>
+#include "philsplot.h"
+
+int main()
+{		
+	double x1, x2, y1, y2;
+	x1=0.;
+	y1=0.;
+	x2=5.;
+	y2=25.;
+	double expand;
+	int color;
+	expand=2;
+	color=1;
+	open_plot("700x700");
+	box_plot(x1,x2,y1,y2,expand,color,"Time (Seconds)","Height (Meters)","","");
+	double t,y;
+	t=0;
+	y=20;
+	double g, a, b, m, v, dy, dv, dt;
+	g=9.8;
+	b=0.01;
+	m=0.1;
+	dt=0.01;
+	int lcolor, lweight, lstyle, nlabel;
+	lcolor=2;
+	lweight=2;
+	lstyle=1;
+	while(y>0)
+	{
+		locate_plot(t,y);
+		a=-g+(b/m)*pow(v,2);
+		dv=a*dt;
+		v+=dv;
+		dy=v*dt;
+		y+=dy;
+		t+=dt;
+		drawto_plot(t,y,lcolor,lstyle,lweight);
+		flush_plot();
+	}	
+	printf("Press Enter");
+	getchar();
+	close_plot();
+}

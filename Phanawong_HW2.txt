@@ -1,0 +1,52 @@
+//Homework Assignment 2
+//Pearce Phanawong 3/13/18
+//Plot the function y=x^4-x^2 over the range -1.2<x<1.2
+//Choose the y-axis scale so that the function can be seen everywhere
+//over this x-range and yet is not so small that details are hard to see
+//xv grapher.png
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "philsplot.h"
+
+int main()
+{
+	char filename[]="Grapher.png";
+		//gets image of plot
+	double x1=-1.3,x2=+1.3,y1=-0.3,y2=0.7;
+		//dimensions of plot
+	int equation;
+		//title of the equation
+	const char *clabel;
+	int color=1;
+		//color of plot
+	int expand=3.0;
+		//size of characters on plot
+	int linecolor=2, linestyle=1, linewidth=3;
+		//color, style, and width of line
+	int n=25;
+		//number of points on plot
+	double x[] = {-1.2, -1.1, -1, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2,
+		      -0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 
+		      1.2};
+		//x values for plot
+	double y[] = {0.6336, 0.2541, 0, -0.1539, -0.2304, -0.2499, -0.2304, -0.1875,
+		      -0.1344, -0.0819, -0.0384, -0.0099, 0, -0.0099, -0.0384, 
+		      -0.0819, -0.1344,-0.1875, -0.2304, -0.2499, -0.2304, -0.1539,
+		      0, 0.2541, 0.6336};
+		//y values for plot
+	open_plot("700x700");
+		//opens screen with graph
+	box_plot(x1,x2,y1,y2,expand,color,"x-axis","y-axis","","");
+		//sets dimensions of plot
+	curve_plot(n, x, y, linecolor, linewidth, linestyle, equation, expand,
+		   clabel);
+		//draws line with points set in each array
+	flush_plot();
+		//makes plot not close
+	printf("type enter key:");
+		//press it to activate next command
+	close_plot();
+		//closes plot
+}

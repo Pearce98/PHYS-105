@@ -1,0 +1,16 @@
+//rec.c
+//Pearce Phanawong 18 Feb 2018
+//Make a program that asks the user for length, width, and height and return a volume
+#include <stdio.h>
+
+main() {
+	float L,W,H,V;
+	printf("Enter the length ");
+	scanf("%f",&L);
+	printf("Enter the height ");
+	scanf("%f",&H);
+	printf("Enter the width ");
+	scanf("%f",&W);
+	V=L*W*H;
+	printf("The volume is %6.2\n",V);
+}
